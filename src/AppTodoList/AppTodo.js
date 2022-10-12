@@ -20,6 +20,16 @@ const AppTodo = () => {
   
     const [todos, dispatch] = useReducer(todoReducer, initialState)
 
+    const handleNewTodo = (todo) =>{
+        // console.log({todo})
+
+        const action = {
+            type: 'ADD',
+            payload: todo
+        }
+        dispatch(action)
+    }
+
     return (
     <>
         <div className='mt-3 mx-4'> 
@@ -31,7 +41,7 @@ const AppTodo = () => {
             </div>
             <div className='col-5'>
                 <h3 className='text-light'>AGREGAR TODO</h3>
-                <TodoAdd />
+                <TodoAdd onNewTodo={handleNewTodo} />
             </div>
         </div>
     </>
